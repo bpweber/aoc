@@ -1,6 +1,21 @@
 #include <iostream>
 #include <fstream>
 
+std::string digits[20] =  {"1", "2", "3", "4", "5", "6", "7", "8", "",
+                           "one", "two", "three", "four", "five",
+                           "six", "seven", "eight", "nine", "ten"};
+
+std::string findDigitsInString(std::string s){
+    for(std::string digit : digits){
+//      std::cout << digit << std::endl;
+        size_t pos = s.find(digit);
+        if (pos != std::string::npos){
+            std::cout << digit << " at " << pos << std::endl;
+        }
+    } 
+    return "";
+}
+
 std::string getCalibrationFromString(std::string s) {
     std::string left = "";
     std::string right = "";
@@ -27,9 +42,10 @@ void readDataFromFile(){
     std::string s; 
     std::ifstream f("input.txt");
     while(getline(f, s)){
-        int val = stoi(getCalibrationFromString(s));
-        total += val;
-        std::cout << val << std::endl;
+        findDigitsInString(s);
+//      int val = stoi(getCalibrationFromString(s));
+//      total += val;
+//      std::cout << val << std::endl;
     }
     std::cout << total << std::endl;
     f.close();
